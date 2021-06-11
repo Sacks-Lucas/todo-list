@@ -16,3 +16,16 @@ export const todoFilterSelector = selector({
         }
     }
 })
+
+export const todoStatsSelector = selector({
+    key:'todoStatsSelector',
+    get:({get}) => {
+        const list = get(todoListState)
+        return {
+            total:list.length,
+            toDo:list.filter(item=>!item.isCompleted).length,
+            notTodo:list.filter(item=>item.isCompleted).length,
+            completePercentage:list.length === 0 ? 0 : list.filter(item=>item.isCompleted).length / list.length,
+        }
+    }
+})
