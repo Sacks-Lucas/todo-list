@@ -1,11 +1,11 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { todoListState } from '../atom'
+import { todoFilterSelector } from '../selectors'
 import TodoItem from './TodoItem'
 
 
 const TodoList = () => {
-    const todos=useRecoilValue(todoListState)
+    const todos=useRecoilValue(todoFilterSelector)
     return (
         <div>
             {
