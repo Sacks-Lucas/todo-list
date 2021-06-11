@@ -3,14 +3,19 @@ import ItemCreator from "./components/ItemCreator";
 import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
 import TodoStats from "./components/TodoStats";
+import UserData from "./components/UserData";
+import { Suspense } from "react";
 
 function App() {
   return (
     <RecoilRoot>
-      <TodoFilter />
-      <TodoStats />
-      <ItemCreator />
-      <TodoList />
+      <Suspense fallback={<h1>Cargando...</h1>}>
+        <UserData/>
+        <TodoFilter />
+        <TodoStats />
+        <ItemCreator />
+        <TodoList />
+      </Suspense>
     </RecoilRoot>
   );
 }

@@ -1,5 +1,7 @@
 import { selector } from "recoil";
 import { todoFilterState, todoListState } from "../atom";
+import axios from "axios";
+import { urlData } from "../urls";
 
 export const todoFilterSelector = selector({
     key:'todoFilterSelector',
@@ -28,4 +30,12 @@ export const todoStatsSelector = selector({
             completePercentage:list.length === 0 ? 0 : list.filter(item=>item.isCompleted).length / list.length,
         }
     }
+})
+
+export const userDataSelector = selector({
+    key:'userDataSelector',
+    get: async () =>{
+        const response= await axios.get(urlData)
+        return response.data
+    } 
 })
