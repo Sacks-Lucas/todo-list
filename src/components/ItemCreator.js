@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { todoListState } from '../atom'
-
-let id=0
+import { getId } from '../lets'
 
 const ItemCreator = () => {
     const [text,setText]=useState('')
@@ -14,7 +13,7 @@ const ItemCreator = () => {
         setNewTodo(oldTodoList=>{
             return [...oldTodoList,
             {
-                id:id++,
+                id:getId(),
                 text,
                 isCompleted:false
             }]
